@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 // import PrivateRoute from './components/common/PrivateRoute';
 import PublicRoute from './components/common/PublicRoute';
-import { setCurrentUser, logoutUser } from './store/actions/index';
+import { setCurrentUser, logoutUser } from './store/auth/actions';
 
 import Error from "./pages/Error/error";
 import Index from "./pages";

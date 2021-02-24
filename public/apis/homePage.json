@@ -1,0 +1,127 @@
+{
+    "status":"success",
+    "data": {
+        "discountedTours": [
+            {
+                "image": "assets/img/api_images/tour1.jpg",
+                "title":"Trip to Malam Jaba",
+                "description":"this is demo 1",
+                "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+                "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+                "price":12000,
+                "discountPrice": 7000, 
+                "rating": 4.3
+            },
+            {
+                "image": "assets/img/api_images/tour2.jpg",
+                "title":"Trip to Malam Jaba",
+                "description":"this is demo 1",
+                "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+                "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+                "price":12000,
+                "discountPrice": 7000, 
+                "rating": 4.3
+            },
+            {
+                "image": "assets/img/api_images/tour3.jpg",
+                "title":"Trip to Malam Jaba",
+                "description":"this is demo 1",
+                "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+                "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+                "price":12000,
+                "discountPrice": 7000, 
+                "rating": 4.3
+            },
+            {
+                "image": "assets/img/api_images/tour4.jpg",
+                "title":"Trip to Malam Jaba",
+                "description":"this is demo 1",
+                "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+                "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+                "price":12000,
+                "discountPrice": 7000, 
+                "rating": 4.3
+            },
+            {
+                "image": "assets/img/api_images/tour5.jpg",
+                "title":"Trip to Malam Jaba",
+                "description":"this is demo 1",
+                "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+                "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+                "price":12000,
+                "discountPrice": 7000, 
+                "rating": 4.3
+            },
+            {
+                "image": "assets/img/api_images/tour6.jpg",
+                "title":"Trip to Malam Jaba",
+                "description":"this is demo 1",
+                "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+                "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+                "price":12000,
+                "discountPrice": 7000, 
+                "rating": 4.3
+            },
+            {
+                "image": "assets/img/api_images/tour7.jpg",
+                "title":"Trip to Malam Jaba",
+                "description":"this is demo 1",
+                "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+                "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+                "price":12000,
+                "discountPrice": 7000, 
+                "rating": 4.3
+            },
+            {
+                "image": "assets/img/api_images/tour8.jpg",
+                "title":"Trip to Malam Jaba",
+                "description":"this is demo 1",
+                "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+                "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+                "price":12000,
+                "discountPrice": 7000, 
+                "rating": 4.3
+            },
+            {
+                "image": "assets/img/api_images/tour9.jpg",
+                "title":"Trip to Malam Jaba",
+                "description":"this is demo 1",
+                "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+                "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+                "price":12000,
+                "discountPrice": 7000, 
+                "rating": 4.3
+            },
+            {
+                "image": "assets/img/api_images/tour10.jpg",
+                "title":"Trip to Malam Jaba",
+                "description":"this is demo 1",
+                "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+                "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+                "price":12000,
+                "discountPrice": 7000, 
+                "rating": 4.3
+            },
+            {
+                "image": "assets/img/api_images/tour11.jpg",
+                "title":"Trip to Malam Jaba",
+                "description":"this is demo 1",
+                "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+                "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+                "price":12000,
+                "discountPrice": 7000, 
+                "rating": 4.3
+            },
+            {
+                "image": "assets/img/api_images/tour12.jpg",
+                "title":"Trip to Malam Jaba",
+                "description":"this is demo 1",
+                "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+                "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+                "price":12000,
+                "discountPrice": 7000, 
+                "rating": 4.3
+            }
+        ]
+    }
+}

@@ -2,7 +2,7 @@ import {
 	SET_ERRORS, 
 	CLEAR_ERRORS 
 
-} from '../actions/actionTypes';
+} from './types';
 
 const initialState = {};
 

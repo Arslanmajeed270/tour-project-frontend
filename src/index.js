@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 
-import { store } from './store/reducers/index'
+import { store } from './store/index'
 
 const app = (
   <Provider store={store}>
