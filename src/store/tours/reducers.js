@@ -1,24 +1,24 @@
 import { 
-	SET_HOME_PAGE_DATA,
-	SET_CITIES_DATA
+	SET_TOURS_DATA,
+	SET_SINGLE_TOURS
  } from './types';
 
 const initialState = {
-	homePageData: {},
-	cities: []
+	toursData: {},
+	singleTour: []
 };
 
 export default function(state = initialState, action) {
 	switch (action.type) {
-		case SET_HOME_PAGE_DATA:
+		case SET_TOURS_DATA:
 			return {
 				...state,
-				homePageData: action.payload
+				toursData: action.payload
 			};
-		case SET_CITIES_DATA:
+		case SET_SINGLE_TOURS:
 			return {
 				...state,
-				cities: action.payload
+				singleTour: action.payload
 			};
 		default:
 			return state;

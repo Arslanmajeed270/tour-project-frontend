@@ -1,34 +1,59 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Searach extends Component {
+class Search extends Component {
 
     render() {
+		const { cities, location, from, departure, returnDate, travelType, onChangeHandler } = this.props;
 
-    return  <div className="search-area tp-main-search-area viaje-go-top">
+    return  (
+	<div className="search-area tp-main-search-area viaje-go-top">
 		  <div className="container">
 		    <div className="tp-main-search">
 		      <div className="row">
 		        <div className="col-lg-3 col-md-4">
 		          <div className="tp-search-single-wrap">
-		            <input className="w-100" type="text" placeholder="Bangladesh,Dhaka" />
+		            <input className="w-100" 
+						type="text" 
+						placeholder="Location"
+						name="location"
+						value={location}
+						onChange={onChangeHandler}
+					/>
 		            <i className="ti-location-pin" />
 		          </div>
 		        </div>
 		        <div className="col-lg-2 col-md-4">
-		          <div className="tp-search-single-wrap">
-		            <input className="w-100" type="text" placeholder="Where From?" />
-		            <i className="fa fa-dot-circle-o" />
+		          <div className="tp-search-single-wrap float-left w-100">
+
+					<select 
+						className="select w-100"
+						name="from"
+						value={from}
+						onChange={onChangeHandler}
+					>
+		              <option value >Where From?</option>
+					  { cities && cities.length ? cities.map( (data, idx) => (
+						  <option key={idx} value={data.id} >{data.name}</option>
+					  )) 
+					  :"" }
+		            </select>
+					<i className="fa fa-dot-circle-o" />
 		          </div>
 		        </div>
 		        <div className="col-lg-2 col-md-4 order-lg-9">
 		          <div className="tp-search-single-wrap float-left w-100">
-		            <select className="select w-100">
-		              <option value={1}>Travel Type</option>
-		              <option value={2}>Event Travel</option>
-		              <option value={3}>Weekend Break</option>
-		              <option value={4}>Package Holiday</option>
-		              <option value={5}>Business Travel</option>
+		            <select 
+						className="select w-100"
+						name="travelType"
+						value={travelType}
+						onChange={onChangeHandler}
+					>
+		              <option value={""}>Travel Type</option>
+		              <option value={"Event Travel"}>Event Travel</option>
+		              <option value={"Weekend Break"}>Weekend Break</option>
+		              <option value={"Package Holiday"}>Package Holiday</option>
+		              <option value={"Business Travel"}>Business Travel</option>
 		            </select>
 		            <i className="fa fa-plus-circle" />
 		          </div>
@@ -36,11 +61,23 @@ class Searach extends Component {
 		        <div className="col-lg-3 col-md-8 order-lg-6">
 		          <div className="tp-search-single-wrap float-left">
 		            <div className="tp-search-date tp-departing-date-wrap w-50 float-left">
-		              <input type="text" className="departing-date" placeholder="Departing" />
+		              <input type="text" 
+						className="departing-date" 
+						placeholder="Departing" 
+						name="departure"
+						value={departure}
+						onChange={onChangeHandler}
+					  />
 		              <i className="fa fa-calendar-minus-o" />
 		            </div>
 		            <div className="tp-search-date tp-returning-date-wrap w-50 float-left">
-		              <input type="text" className="returning-date" placeholder="Returning" />
+		              <input type="text" 
+						className="returning-date" 
+						placeholder="Returning" 
+						name="returnDate"
+						value={returnDate}
+						onChange={onChangeHandler}
+					  />
 		              <img src={require("../../../assets/img/icons/2.png")} alt="icons" />
 		            </div>
 		          </div>
@@ -51,9 +88,9 @@ class Searach extends Component {
 		      </div>
 		    </div>
 		  </div>
-		</div>
+		</div>)
 
         }
 }
 
-export default Searach
+export default Search;

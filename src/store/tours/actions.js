@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 import {
-    SET_HOME_PAGE_DATA,
-    SET_CITIES_DATA
+    SET_TOURS_DATA,
+    SET_SINGLE_TOURS
 } from './types';
 
 import {
@@ -17,19 +17,19 @@ import {
 
 const BACKEND_SERVER_URL = process.env.REACT_APP_API_URL || "/";
 
-// HomepageDate - Get homePageDate from backend
-export const getHomePageData = () => dispatch => {
+// ToursDta - Get ToursData from backend
+export const getToursData = (reqPacket) => dispatch => {
     dispatch(setPageLoading());
 
     axios
     .get(
-        BACKEND_SERVER_URL+'apis/homePage.json'
+        BACKEND_SERVER_URL+`apis/tour${reqPacket.offset}.json`
     )
     .then(res => {
         const { status, data } = res.data;
         if( status === "success" ){
             dispatch({
-                type: SET_HOME_PAGE_DATA,
+                type: SET_TOURS_DATA,
                 payload: data
             });
             dispatch(clearErrors())
@@ -43,20 +43,20 @@ export const getHomePageData = () => dispatch => {
     .finally(() => dispatch(clearPageLoading()))
 };
 
-// Cities - Get cities from backend
-export const getCities = () => dispatch => {
+// Single Tour - Get single tour from backend
+export const getSingleTour = (id) => dispatch => {
     dispatch(setPageLoading());
 
     axios
     .get(
-        BACKEND_SERVER_URL+'apis/cities.json'
+        BACKEND_SERVER_URL+'apis/singleTour.json'
     )
     .then(res => {
         const { status, data } = res.data;
         if( status === "success" ){
             dispatch({
-                type: SET_CITIES_DATA,
-                payload: data.cities
+                type: SET_SINGLE_TOURS,
+                payload: data
             });
             dispatch(clearErrors())
         }else{

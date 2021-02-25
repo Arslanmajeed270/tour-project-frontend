@@ -1,11 +1,56 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import moment from 'moment';
 class Offer extends Component {
 
-    render() {
+	offerRenderer = () => {
+		const { discountedTours } = this.props;
+		const offerContent = (
+			<div className="destinations-list-slider">
+				{discountedTours.length ? discountedTours.map( (data, idx) => ( 
+			<div key={idx}  className="d-list-slider-item">
+			<div className="single-destinations-list text-center">
+			  <div className="thumb">
+				{ data.specialOffer ? 
+				<span className="d-list-tag">Special Offer</span>
+				: ""
+				} 
+				<img width="100%" height="195" src={`${data.image}`} alt="list" />
+				<div className="d-list-btn-wrap">
+				  <div className="d-list-btn viaje-go-top">
+					<Link className="btn btn-yellow" to="/contact-us">Book Now <i className="fa fa-paper-plane" /></Link>
+				  </div>
+				</div>
+			  </div>
+			  <div className="details">
+				<h4 className="title">{data.title}</h4>
+				<p className="content">{data.description}</p>
+				<ul className="tp-list-meta border-bt-dot">
+				  <li><i className="fa fa-calendar-o" /> {moment(Date(data.departure)).format('DD MMM')}</li>
+				  <li><i className="fa fa-clock-o" /> {data.totalDays} days</li>
+				  <li><i className="fa fa-star" /> {data.rating}</li>
+				</ul>
+				<div className="tp-price-meta tp-price-meta-cl">
+				  <p>Price</p>
+				  <h2>{data.discountPrice} <small>$</small></h2>
+				  <del>{data.price}<span>$</span></del>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  ))
+		  :""}
 
-    return  <div className="offer-area pd-top-70">
+			</div>
+			);
+			return offerContent;
+	}
+
+
+
+    render() {
+    return (
+	<div className="offer-area pd-top-70">
 			  <div className="container">
 			    <div className="row justify-content-center">
 			      <div className="col-xl-6 col-lg-8">
@@ -20,116 +65,10 @@ class Offer extends Component {
 			    <div className="container">
 			      <div className="row">
 			        <div className="col-xl-9 col-lg-10 offset-xl-1 order-lg-12">
-			          <div className="destinations-list-slider">
-			            <div className="d-list-slider-item">
-			              <div className="single-destinations-list text-center">
-			                <div className="thumb">
-			                  <span className="d-list-tag">Special Offer</span>
-			                  <img src={require("../../../assets/img/destination-list/1.png")} alt="list" />
-			                  <div className="d-list-btn-wrap">
-			                    <div className="d-list-btn viaje-go-top">
-			                      <Link className="btn btn-yellow" to="/contact-us">Book Now <i className="fa fa-paper-plane" /></Link>
-			                    </div>
-			                  </div>
-			                </div>
-			                <div className="details">
-			                  <h4 className="title">Greece</h4>
-			                  <p className="content">Atmosphere of the sunny country</p>
-			                  <ul className="tp-list-meta border-bt-dot">
-			                    <li><i className="fa fa-calendar-o" /> 8oct</li>
-			                    <li><i className="fa fa-clock-o" /> 4 days</li>
-			                    <li><i className="fa fa-star" /> 4.3</li>
-			                  </ul>
-			                  <div className="tp-price-meta tp-price-meta-cl">
-			                    <p>Price</p>
-			                    <h2>620 <small>$</small></h2>
-			                    <del>620<span>$</span></del>
-			                  </div>
-			                </div>
-			              </div>
-			            </div>
-			            <div className="d-list-slider-item">
-			              <div className="single-destinations-list text-center">
-			                <div className="thumb">
-			                  <img src={require("../../../assets/img/destination-list/2.png")} alt="list" />
-			                  <div className="d-list-btn-wrap">
-			                    <div className="d-list-btn viaje-go-top">
-			                      <Link className="btn btn-yellow" to="/contact-us">Book Now <i className="fa fa-paper-plane" /></Link>
-			                    </div>
-			                  </div>
-			                </div>
-			                <div className="details">
-			                  <h4 className="title">Italy</h4>
-			                  <p className="content">Atmosphere of the sunny country</p>
-			                  <ul className="tp-list-meta border-bt-dot">
-			                    <li><i className="fa fa-calendar-o" /> 8oct</li>
-			                    <li><i className="fa fa-clock-o" /> 4 days</li>
-			                    <li><i className="fa fa-star" /> 4.3</li>
-			                  </ul>
-			                  <div className="tp-price-meta tp-price-meta-cl">
-			                    <p>Price</p>
-			                    <h2>620 <small>$</small></h2>
-			                    <del>620<span>$</span></del>
-			                  </div>
-			                </div>
-			              </div>
-			            </div>
-			            <div className="d-list-slider-item">
-			              <div className="single-destinations-list text-center">
-			                <div className="thumb">
-			                  <span className="d-list-tag">Special Offer</span>
-			                  <img src={require("../../../assets/img/destination-list/3.png")} alt="list" />
-			                  <div className="d-list-btn-wrap">
-			                    <div className="d-list-btn viaje-go-top">
-			                      <Link className="btn btn-yellow" to="/contact-us">Book Now <i className="fa fa-paper-plane" /></Link>
-			                    </div>
-			                  </div>
-			                </div>
-			                <div className="details">
-			                  <h4 className="title">Canada</h4>
-			                  <p className="content">Atmosphere of the sunny country</p>
-			                  <ul className="tp-list-meta border-bt-dot">
-			                    <li><i className="fa fa-calendar-o" /> 8oct</li>
-			                    <li><i className="fa fa-clock-o" /> 4 days</li>
-			                    <li><i className="fa fa-star" /> 4.3</li>
-			                  </ul>
-			                  <div className="tp-price-meta tp-price-meta-cl">
-			                    <p>Price</p>
-			                    <h2>620 <small>$</small></h2>
-			                    <del>620<span>$</span></del>
-			                  </div>
-			                </div>
-			              </div>
-			            </div>
-			            <div className="d-list-slider-item">
-			              <div className="single-destinations-list text-center">
-			                <div className="thumb">
-			                  <span className="d-list-tag">Special Offer</span>
-			                  <img src={require("../../../assets/img/destination-list/1.png")} alt="list" />
-			                  <div className="d-list-btn-wrap">
-			                    <div className="d-list-btn viaje-go-top" >
-			                      <Link className="btn btn-yellow" to="/contact-us">Book Now <i className="fa fa-paper-plane" /></Link>
-			                    </div>
-			                  </div>
-			                </div>
-			                <div className="details">
-			                  <h4 className="title">Greece</h4>
-			                  <p className="content">Atmosphere of the sunny country</p>
-			                  <ul className="tp-list-meta border-bt-dot">
-			                    <li><i className="fa fa-calendar-o" /> 8oct</li>
-			                    <li><i className="fa fa-clock-o" /> 4 days</li>
-			                    <li><i className="fa fa-star" /> 4.3</li>
-			                  </ul>
-			                  <div className="tp-price-meta tp-price-meta-cl">
-			                    <p>Price</p>
-			                    <h2>620 <small>$</small></h2>
-			                    <del>620<span>$</span></del>
-			                  </div>
-			                </div>
-			              </div>
-			            </div>
-			          </div>
-			        </div>
+					 
+					 {this.offerRenderer()}
+					 
+				    </div>
 			        <div className="col-lg-2 align-self-center order-lg-11">
 			          <div className="container">
 			            <div className="destinations-slider-controls">
@@ -153,9 +92,8 @@ class Offer extends Component {
 			    </div>
 			  </div>
 			</div>
-
-
-        }
+	)   
+	}
 }
 
 export default Offer

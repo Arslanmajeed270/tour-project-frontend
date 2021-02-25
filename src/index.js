@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 // Router and Redux setup setup start
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-
+import * as serviceWorker from './serviceWorker';
 import './index.css';
 import App from './App';
 
@@ -19,3 +19,4 @@ const app = (
 );
 
 ReactDOM.render(app ,document.getElementById('root'));
+serviceWorker.unregister();

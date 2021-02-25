@@ -19,10 +19,7 @@ class Video extends Component {
 			        <div className="video-popup-wrap">
 			          <div className="thumb">
 			            <img src={require("../../../assets/img/video.png")} alt="video" />
-			          </div>
-			          <div className="video-popup-btn">
-			            <Link to="https://www.youtube.com/watch?v=c7XEhXZ_rsk" className="video-play-btn mfp-iframe"><i className="fa fa-play" /></Link>
-			          </div>
+			          </div>			         
 			        </div>
 			      </div>
 			    </div>

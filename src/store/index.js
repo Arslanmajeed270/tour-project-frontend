@@ -6,7 +6,8 @@ import thunk from 'redux-thunk';
 import pageReducer from './page/reducers';
 import authReducer from './auth/reducers';
 import errorsReducer from './errors/reducers';
-import homePageReducer from './errors/reducers';
+import homePageReducer from './home/reducers';
+import toursReducer from './tours/reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   page: pageReducer,
   auth : authReducer,
   errors: errorsReducer,
-  home: homePageReducer
+  home: homePageReducer,
+  tours: toursReducer
 });
 
 //const store = createStore(burgerBuilderReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

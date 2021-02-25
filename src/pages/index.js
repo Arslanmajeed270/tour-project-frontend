@@ -6,9 +6,19 @@ import Navbar from '../components/commonLayout/navbar';
 import PageHeader from '../components/commonLayout/page-header';
 import Subscribe from '../components/commonLayout/subscribe';
 import Routes from './routes';
+import Loader from '../components/common/Loader';
 
+import { connect } from 'react-redux';
 
+const mapStateToProps = (state) => ({
+    page: state.page
+  })
+  
 class Index extends Component {
+
+    state = {
+        loading: false
+    }
 
     headerTitleHandler = () => {
         const { history } = this.props;
@@ -28,11 +38,30 @@ class Index extends Component {
         return title;
     }
 
+    static getDerivedStateFromProps(props, state) {
+		const { page } = props;
+		let stateChanged = false;
+		let changedState = {};
+
+	
+		if ( page && JSON.stringify(state.loading) !== JSON.stringify(page.loading) ) {
+			changedState.loading = page.loading;
+			stateChanged = true;
+		}
+
+		if (stateChanged) return changedState;
+		return null;
+	}
+
     render() {
         const { history } = this.props;
+        const { loading } = this.state;
         const pathname = history.location.pathname;
         return (
             <React.Fragment>
+                {loading &&
+                    <Loader  />
+                }
                 <div className="body-overlay" id="body-overlay"></div>
                <FullScreenSearch />
                 <div id="viaje">
@@ -40,9 +69,11 @@ class Index extends Component {
                     { pathname !== "/" &&
                         <PageHeader headertitle={this.headerTitleHandler()}  />
                     }
-                    <Routes />
+                    
+                        <Routes />
+                   
                     {
-                        pathname !== "/about-us" &&
+                        pathname !== "/about-us" && pathname !== "/tour-list" &&
                         <Subscribe />
                     }
                     <Footer />
@@ -54,4 +85,4 @@ class Index extends Component {
 }
 
 
-export default Index;
+export default connect(mapStateToProps,null)(Index);

@@ -3,9 +3,48 @@ import { Link } from 'react-router-dom';
 
 class TourList extends Component {
 
+  toursRendererHandler = () => {
+    const { cities, location, from, departure, returnDate, travelType, tours,
+      totalPages, offset } = this.props;
+      return (
+        <div className="row justify-content-center">
+                      
+        <div className="col-lg-4 col-sm-6">
+          <div className="single-destinations-list style-two">
+            <div className="thumb">
+              <img src={require("../../../assets/img/destination-list/4.png")} alt="list" />
+            </div>
+            <div className="details">
+              <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />Maldives</p>
+              <h4 className="title"><Link to="/tour-details">Hurawalhi Island</Link></h4>
+              <p className="content">7 Days Tour on 2 person</p>
+              <div className="tp-price-meta">
+                <h2>620 <small>$</small></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="col-lg-12 text-center">
+          <div className="tp-pagination text-center d-inline-block mt-4">
+            <ul>
+              <li><Link className="prev page-numbers" to="#"><i className="la la-long-arrow-left" /></Link></li>
+              <li><span className="page-numbers">1</span></li>
+              <li><span className="page-numbers current">2</span></li>
+              <li><Link className="page-numbers" to="#">3</Link></li>
+              <li><Link className="page-numbers" to="#">4</Link></li>
+              <li><Link className="next page-numbers" to="#"><i className="la la-long-arrow-right" /></Link></li>
+            </ul>                          
+          </div>
+        </div>
+      </div>
+      );
+  }
+
     render() {
 
-    return	<div className="tour-list-area pd-top-120 viaje-go-top">
+    return	(
+    <div className="tour-list-area pd-top-120 viaje-go-top">
               <div className="container">
                 <div className="row">
                   <div className="col-xl-9 col-lg-8 order-lg-12">
@@ -38,6 +77,7 @@ class TourList extends Component {
                       </div>
                     </div>
                     <div className="row justify-content-center">
+                      
                       <div className="col-lg-4 col-sm-6">
                         <div className="single-destinations-list style-two">
                           <div className="thumb">
@@ -173,6 +213,7 @@ class TourList extends Component {
                           </div>
                         </div>
                       </div>   
+                      
                       <div className="col-lg-12 text-center">
                         <div className="tp-pagination text-center d-inline-block mt-4">
                           <ul>
@@ -237,7 +278,7 @@ class TourList extends Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>)
         }
 }
 
