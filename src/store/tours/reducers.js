@@ -5,7 +5,7 @@ import {
 
 const initialState = {
 	toursData: {},
-	singleTour: []
+	singleTour: {}
 };
 
 export default function(state = initialState, action) {

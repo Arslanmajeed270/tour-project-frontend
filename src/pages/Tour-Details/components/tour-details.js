@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
+import moment from 'moment';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class TourDetails extends Component {
 
     render() {
-
-    return	<div className="tour-details-area mg-top--70">
+      const { singleTour } = this.props;
+    return	(
+    <div className="tour-details-area mg-top--70">
               <div className="tour-details-gallery">
                 <div className="container-bg bg-dark-blue">
                   <div className="container">
@@ -16,10 +18,7 @@ class TourDetails extends Component {
                       <div className="tp-gallery-item col-md-5 col-sm-6 mb-10">
                         <div className="tp-gallery-item-img">
                           <div className="thumbnails">
-                            <img src={require("../../../assets/img/tour-details/1.png")} alt="tour-details" />
-                            <div className="video-popup-btn">
-                              <Link to="https://www.youtube.com/watch?v=c7XEhXZ_rsk" className="video-play-btn mfp-iframe" tabIndex={0}><i className="fa fa-play" /></Link>
-                            </div>
+                            <img width="477.7" height="303" src={singleTour.images && singleTour.images.length && singleTour.images[0]} alt="tour-details" />
                           </div>
                         </div>
                       </div>
@@ -27,7 +26,7 @@ class TourDetails extends Component {
                       <div className="tp-gallery-item col-md-3 col-sm-6">
                         <div className="tp-gallery-item-img">
                           <Link to="#" data-effect="mfp-zoom-in">
-                            <img src={require("../../../assets/img/tour-details/2.png")} alt="tour-details/2" />
+                            <img width="274.5" height="303" src={singleTour.images && singleTour.images.length > 1 && singleTour.images[1]} alt="tour-details/2" />
                           </Link>
                         </div>
                       </div>
@@ -35,7 +34,7 @@ class TourDetails extends Component {
                       <div className="tp-gallery-item col-lg-2 col-md-4 col-sm-6">
                         <div className="tp-gallery-item-img">
                           <Link to="#" data-effect="mfp-zoom-in">
-                            <img src={require("../../../assets/img/tour-details/3.png")} alt="tour-details/3.png" />
+                            <img width="173" height="136.72" src={singleTour.images && singleTour.images.length > 2 && singleTour.images[2]} alt="tour-details/3.png" />
                           </Link>
                         </div>
                       </div>
@@ -43,7 +42,7 @@ class TourDetails extends Component {
                       <div className="tp-gallery-item col-lg-2 col-md-4 col-sm-6">
                         <div className="tp-gallery-item-img">
                           <Link to="#" data-effect="mfp-zoom-in">
-                            <img src={require("../../../assets/img/tour-details/4.png")} alt="tour-details/4.png" />
+                            <img width="173" height="136.72" src={singleTour.images && singleTour.images.length > 3 && singleTour.images[3]} alt="tour-details/4.png" />
                           </Link>
                         </div>
                       </div>
@@ -51,7 +50,7 @@ class TourDetails extends Component {
                       <div className="tp-gallery-item col-lg-2 col-md-4 col-sm-6">
                         <div className="tp-gallery-item-img">
                           <Link to="#" data-effect="mfp-zoom-in">
-                            <img src={require("../../../assets/img/tour-details/5.png")} alt="tour-details/5.png" />
+                            <img width="173" height="136.72" src={singleTour.images && singleTour.images.length > 4 && singleTour.images[4]} alt="tour-details/5.png" />
                           </Link>
                         </div>
                       </div>
@@ -59,7 +58,7 @@ class TourDetails extends Component {
                       <div className="tp-gallery-item col-lg-2 col-md-4 col-sm-6">
                         <div className="tp-gallery-item-img">
                           <Link to="#" data-effect="mfp-zoom-in">
-                            <img src={require("../../../assets/img/tour-details/6.png")} alt="tour-details/6.png" />
+                            <img width="173" height="136.72" src={singleTour.images && singleTour.images.length > 5 && singleTour.images[5]} alt="tour-details/6.png" />
                           </Link>
                         </div>
                       </div>
@@ -67,22 +66,23 @@ class TourDetails extends Component {
                     <div className="row">
                       <div className="col-xl-3 col-lg-4">
                         <div className="details">
-                          <p className="location mb-0"><i className="fa fa-map-marker" />Canada</p>
-                          <h4 className="title">Bali Province</h4>
-                          <p className="content">3 days 2 person</p>
+                          <p className="location mb-0"><i className="fa fa-map-marker" />{ singleTour.location ? singleTour.location : "" }</p>
+                          <h4 className="title">{ singleTour.title ? singleTour.title : "" }</h4>
+                          <p className="content">{ singleTour.description ? singleTour.description : "" }</p>
                           <div className="tp-review-meta">
-                            <i className="ic-yellow fa fa-star" />
-                            <i className="ic-yellow fa fa-star" />
-                            <i className="ic-yellow fa fa-star" />
-                            <i className="ic-yellow fa fa-star" />
-                            <i className="fa fa-star" />
-                            <span>4.0</span>
+                            <i className={`${ singleTour.rating && singleTour.rating > 0 ? "ic-yellow" : ""} fa fa-star`} />
+                            <i className={`${ singleTour.rating && singleTour.rating > 1 ? "ic-yellow" : ""} fa fa-star`} />
+                            <i className={`${ singleTour.rating && singleTour.rating > 2 ? "ic-yellow" : ""} fa fa-star`} />
+                            <i className={`${ singleTour.rating && singleTour.rating > 3 ? "ic-yellow" : ""} fa fa-star`} />
+                            <i className={`${ singleTour.rating && singleTour.rating > 4 ? "ic-yellow" : ""} fa fa-star`} />
+                            <span>{ singleTour.rating ? singleTour.rating : ""}</span>
                           </div>
                           <div className="all-tags">
-                            <Link to="#">Adventures</Link>
-                            <Link to="#">Local special ties</Link>
-                            <Link to="#">Natural</Link>
-                            <Link to="#">Travel</Link>
+                            { singleTour.tags && singleTour.tags.length ? 
+                            singleTour.tags.map( (data,idx) =>(
+                              <Link key={idx} to="#">{data}</Link>
+                            ))
+                            :"" }
                           </div>
                         </div>
                       </div>
@@ -91,15 +91,14 @@ class TourDetails extends Component {
                           <p className="book-list-content">Just booked! Get your spot before it's too late.</p>
                           <div className="tp-price-meta">
                             <p>Price</p>
-                            <h2>775 <small>$</small></h2>
+                            <h2>{singleTour.price ? singleTour.price : ""} <small>$</small></h2>
                           </div>
                         </div>
                         <ul className="tp-list-meta border-tp-solid">
-                          <li className="ml-0"><i className="fa fa-calendar-o" /> 8 Oct</li>
-                          <li><i className="fa fa-clock-o" /> 4 Days</li>
-                          <li><i className="fa fa-users" />2 Person</li>
-                          <li><i className="fa fa-snowflake-o" /> Relaxing</li>
-                          <li><i className="fa fa-star" /> 4.3</li>
+                          <li className="ml-0"><i className="fa fa-calendar-o" /> { singleTour.departure ? moment(Date(singleTour.departure)).format('DD MMM') : ""}</li>
+                          <li><i className="fa fa-clock-o" /> { singleTour.totalDays ? singleTour.totalDays : "" } Days</li>
+                          <li><i className="fa fa-users" />{singleTour.allowedPersons ? singleTour.allowedPersons : ""} Person</li>
+                          <li><i className="fa fa-star" />{singleTour.rating ? singleTour.rating : ""} </li>
                         </ul>
                       </div>   
                     </div>
@@ -356,7 +355,7 @@ class TourDetails extends Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>)
 
         }
 }

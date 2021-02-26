@@ -1,10 +1,38 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import $ from 'jquery';
 
 class Search extends Component {
 
+	state = {
+		location: "",
+	}
+
+	onChangeHandler = (e) => {
+		const { name, value } = e.target;
+		this.setState({
+		  [name]: value
+		});
+	  }
+	  onSubmitHandler = () => {
+		  const { location } = this.state;
+		  const { onSearchHandler } = this.props;
+		 const locationFrom = $('select[name="from"]').siblings('.nice-select').find('span').html();
+		 const departure = $('input[name="departure"]').val();
+		 const returnDate = $('input[name="returnDate"]').val();
+		 const travelType = $('select[name="travelType"]').siblings('.nice-select').find('span').html();
+		 const reqPacket = {
+			location,
+			locationFrom,
+			departure,
+			returnDate,
+			travelType
+		  }
+		  onSearchHandler(reqPacket);
+		}
+
     render() {
-		const { cities, location, from, departure, returnDate, travelType, onChangeHandler } = this.props;
+		const { cities } = this.props;
+		const { location } = this.state;
 
     return  (
 	<div className="search-area tp-main-search-area viaje-go-top">
@@ -18,7 +46,7 @@ class Search extends Component {
 						placeholder="Location"
 						name="location"
 						value={location}
-						onChange={onChangeHandler}
+						onChange={this.onChangeHandler}
 					/>
 		            <i className="ti-location-pin" />
 		          </div>
@@ -29,10 +57,8 @@ class Search extends Component {
 					<select 
 						className="select w-100"
 						name="from"
-						value={from}
-						onChange={onChangeHandler}
 					>
-		              <option value >Where From?</option>
+		              <option value="" >Where From?</option>
 					  { cities && cities.length ? cities.map( (data, idx) => (
 						  <option key={idx} value={data.id} >{data.name}</option>
 					  )) 
@@ -46,8 +72,6 @@ class Search extends Component {
 		            <select 
 						className="select w-100"
 						name="travelType"
-						value={travelType}
-						onChange={onChangeHandler}
 					>
 		              <option value={""}>Travel Type</option>
 		              <option value={"Event Travel"}>Event Travel</option>
@@ -65,8 +89,6 @@ class Search extends Component {
 						className="departing-date" 
 						placeholder="Departing" 
 						name="departure"
-						value={departure}
-						onChange={onChangeHandler}
 					  />
 		              <i className="fa fa-calendar-minus-o" />
 		            </div>
@@ -75,15 +97,13 @@ class Search extends Component {
 						className="returning-date" 
 						placeholder="Returning" 
 						name="returnDate"
-						value={returnDate}
-						onChange={onChangeHandler}
 					  />
 		              <img src={require("../../../assets/img/icons/2.png")} alt="icons" />
 		            </div>
 		          </div>
 		        </div>
 		        <div className="col-lg-2 col-md-4 order-12">
-		          <Link className="btn btn-yellow" to="/tour-list"><i className="ti-search" /> Search</Link>
+		          <button className="btn btn-yellow" onClick={this.onSubmitHandler} ><i className="ti-search" /> Search</button>
 		        </div>
 		      </div>
 		    </div>

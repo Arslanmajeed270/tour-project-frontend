@@ -63,18 +63,9 @@ class Navbar extends Component {
               <li>
                 <Link to="/">Home</Link>
               </li>
-              <li className="menu-item-has-children">
-                <Link to="#">Tour</Link>
-                <ul className="sub-menu">
-                  <li>
-                    <Link to="/tour-list">Tours List</Link>
-                  </li>
-                  <li>
-                    <Link to="/tour-details">Tours Details</Link>
-                  </li>
-                </ul>
+              <li>
+                <Link to="/tour-list">Tours List</Link>
               </li>
-              
               <li>
                 <Link to="/about-us">About Us</Link>
               </li>

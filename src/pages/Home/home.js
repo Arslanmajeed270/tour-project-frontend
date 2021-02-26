@@ -15,7 +15,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  onGetHomePageData: () => getHomePageData(),
+  onGetHomePageData: (reqPacket) => getHomePageData(reqPacket),
   onGetCities: () => getCities(),
 }
 
@@ -23,12 +23,7 @@ class Home extends Component {
 
   state = {
     homePageData: {},
-    cities: [],
-    location: "",
-    from: "",
-    departure: new Date(),
-    returnDate: new Date(),
-    travelType: ""
+    cities: []
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -56,35 +51,35 @@ class Home extends Component {
     const { onGetHomePageData, onGetCities } = this.props;
     const { homePageData, cities } = this.state;
     if( !homePageData.discountedTours || !homePageData.discountedTours.length ){
-      onGetHomePageData();
+      const reqPacket = {
+        location : "",
+        locationFrom : "",
+        departure : "",
+        returnDate : "",
+        travelType : ""
+      }
+      onGetHomePageData(reqPacket);
     }
     if( !cities || !cities.length ){
       onGetCities();
     }
   }
 
-  onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value
-    });
+  onSearchHandler = (reqPacket) => {
+    const { onGetHomePageData } = this.props;
+    onGetHomePageData(reqPacket);
   }
 
   render() {
-    const { homePageData, cities, location, from, departure, returnDate, travelType } = this.state;
+    const { homePageData, cities } = this.state;
     const discountedTours = homePageData.discountedTours ? homePageData.discountedTours : [];
     const tours = homePageData.tours ? homePageData.tours : [];
-    console.log("checking this.state: ", this.state);
     return (
       <div>
       <Banner />
-      <Search cities={cities}
-      location={location}
-      from={from}
-      departure={departure}
-      returnDate={returnDate}
-      travelType={travelType}
-      onChangeHandler={this.onChangeHandler}
+      <Search 
+        cities={cities}
+        onSearchHandler={this.onSearchHandler}
       />
       <Intro />
       <Offer discountedTours={discountedTours} />

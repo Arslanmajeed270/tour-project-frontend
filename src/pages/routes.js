@@ -16,7 +16,7 @@ class routes extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/about-us" component={AboutUs} />
             <Route exact path="/tour-list" component={TourList} />
-            <Route exact path="/tour-details" component={TourDetails} />
+            <Route exact path="/tour-details-:id" component={TourDetails} />
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/user-profile" component={UserProfile} />
 

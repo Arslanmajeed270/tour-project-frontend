@@ -56,7 +56,7 @@ export const getSingleTour = (id) => dispatch => {
         if( status === "success" ){
             dispatch({
                 type: SET_SINGLE_TOURS,
-                payload: data
+                payload: data.tour
             });
             dispatch(clearErrors())
         }else{

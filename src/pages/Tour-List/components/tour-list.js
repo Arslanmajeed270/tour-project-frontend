@@ -3,37 +3,59 @@ import { Link } from 'react-router-dom';
 
 class TourList extends Component {
 
+  state = {
+
+  }
+
+  paginationHandler = (offset) => {
+   
+    const { onPaginationHandler } = this.props;
+    onPaginationHandler(offset);
+  }
+
   toursRendererHandler = () => {
-    const { cities, location, from, departure, returnDate, travelType, tours,
-      totalPages, offset } = this.props;
+    const { tours, totalPages, offset } = this.props;
       return (
         <div className="row justify-content-center">
-                      
-        <div className="col-lg-4 col-sm-6">
+          { tours && tours.length ? 
+          tours.map( (data, idx) => (
+          <div key={idx}  className="col-lg-4 col-sm-6">
           <div className="single-destinations-list style-two">
             <div className="thumb">
-              <img src={require("../../../assets/img/destination-list/4.png")} alt="list" />
+              <img src={data.image} height="258" width="387"  alt="list" />
             </div>
             <div className="details">
-              <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />Maldives</p>
-              <h4 className="title"><Link to="/tour-details">Hurawalhi Island</Link></h4>
-              <p className="content">7 Days Tour on 2 person</p>
+              <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />{data.location}</p>
+              <h4 className="title"><Link to={`/tour-details-${data.id}`}>{data.title}</Link></h4>
+              <p className="content">{data.description}</p>
               <div className="tp-price-meta">
-                <h2>620 <small>$</small></h2>
+                <h2>{data.price} <small>$</small></h2>
               </div>
             </div>
           </div>
         </div>
         
+          ))
+          :"" }
         <div className="col-lg-12 text-center">
           <div className="tp-pagination text-center d-inline-block mt-4">
             <ul>
-              <li><Link className="prev page-numbers" to="#"><i className="la la-long-arrow-left" /></Link></li>
-              <li><span className="page-numbers">1</span></li>
-              <li><span className="page-numbers current">2</span></li>
-              <li><Link className="page-numbers" to="#">3</Link></li>
-              <li><Link className="page-numbers" to="#">4</Link></li>
-              <li><Link className="next page-numbers" to="#"><i className="la la-long-arrow-right" /></Link></li>
+              { offset > 1 &&
+                <li><span className="prev page-numbers" onClick={() => this.paginationHandler(offset - 1) } ><i className="la la-long-arrow-left" /></span></li>
+              }
+              { offset - 1 > 1 &&
+                <li><span className="page-numbers" onClick={() => this.paginationHandler(offset - 1) }> {offset - 1} </span></li>
+              }
+              <li><span className="page-numbers current" >{offset}</span></li>
+              { offset + 1 <= totalPages && 
+                <li><span className="page-numbers" to="#" onClick={() => this.paginationHandler(offset + 1) }>{offset+1}</span></li>
+              }
+              { offset + 2 <= totalPages && 
+              <li><span className="page-numbers" to="#" onClick={() => this.paginationHandler(offset + 2) }>{offset+2}</span></li>
+              }
+              { offset + 1 <= totalPages &&
+                <li><span className="next page-numbers" to="#" onClick={() => this.paginationHandler(offset + 1) }><i className="la la-long-arrow-right" /></span></li>
+               }
             </ul>                          
           </div>
         </div>
@@ -76,157 +98,10 @@ class TourList extends Component {
                         </div>
                       </div>
                     </div>
-                    <div className="row justify-content-center">
-                      
-                      <div className="col-lg-4 col-sm-6">
-                        <div className="single-destinations-list style-two">
-                          <div className="thumb">
-                            <img src={require("../../../assets/img/destination-list/4.png")} alt="list" />
-                          </div>
-                          <div className="details">
-                            <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />Maldives</p>
-                            <h4 className="title"><Link to="/tour-details">Hurawalhi Island</Link></h4>
-                            <p className="content">7 Days Tour on 2 person</p>
-                            <div className="tp-price-meta">
-                              <h2>620 <small>$</small></h2>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-sm-6">
-                        <div className="single-destinations-list style-two">
-                          <div className="thumb">
-                            <img src={require("../../../assets/img/destination-list/5.png")} alt="list" />
-                          </div>
-                          <div className="details">
-                            <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />Indonesia</p>
-                            <h4 className="title"><Link to="/tour-details">Bali Province</Link></h4>
-                            <p className="content">4 days 2 person</p>
-                            <div className="tp-price-meta">
-                              <h2>780 <small>$</small></h2>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-sm-6">
-                        <div className="single-destinations-list style-two">
-                          <div className="thumb">
-                            <img src={require("../../../assets/img/destination-list/6.png")} alt="list" />
-                          </div>
-                          <div className="details">
-                            <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />Bangladesh</p>
-                            <h4 className="title"><Link to="/tour-details">Cox's bazar Sea Beach</Link></h4>
-                            <p className="content">4 days 4 person</p>
-                            <div className="tp-price-meta">
-                              <h2>850 <small>$</small></h2>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-sm-6">
-                        <div className="single-destinations-list style-two">
-                          <div className="thumb">
-                            <img src={require("../../../assets/img/destination-list/7.png")} alt="list" />
-                          </div>
-                          <div className="details">
-                            <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />Spain</p>
-                            <h4 className="title"><Link to="/tour-details">Barcelona city beach</Link></h4>
-                            <p className="content">3 days 2 person</p>
-                            <div className="tp-price-meta">
-                              <h2>620 <small>$</small></h2>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-sm-6">
-                        <div className="single-destinations-list style-two">
-                          <div className="thumb">
-                            <img src={require("../../../assets/img/destination-list/8.png")} alt="list" />
-                          </div>
-                          <div className="details">
-                            <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />Africa</p>
-                            <h4 className="title"><Link to="/tour-details">Amazon Africa</Link></h4>
-                            <p className="content">5 days 2 person</p>
-                            <div className="tp-price-meta">
-                              <h2>620 <small>$</small></h2>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-sm-6">
-                        <div className="single-destinations-list style-two">
-                          <div className="thumb">
-                            <img src={require("../../../assets/img/destination-list/9.png")} alt="list" />
-                          </div>
-                          <div className="details">
-                            <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />Thailand</p>
-                            <h4 className="title"><Link to="/tour-details">Thailand beach</Link></h4>
-                            <p className="content">4 days 3 person</p>
-                            <div className="tp-price-meta">
-                              <h2>620 <small>$</small></h2>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-sm-6">
-                        <div className="single-destinations-list style-two">
-                          <div className="thumb">
-                            <img src={require("../../../assets/img/destination-list/10.png")} alt="list" />
-                          </div>
-                          <div className="details">
-                            <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />Bali</p>
-                            <h4 className="title"><Link to="/tour-details">Bali Province</Link></h4>
-                            <p className="content">3 days 2 person</p>
-                            <div className="tp-price-meta">
-                              <h2>620 <small>$</small></h2>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-sm-6">
-                        <div className="single-destinations-list style-two">
-                          <div className="thumb">
-                            <img src={require("../../../assets/img/destination-list/11.png")} alt="list" />
-                          </div>
-                          <div className="details">
-                            <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />France</p>
-                            <h4 className="title"><Link to="/tour-details">France eiffel tower</Link></h4>
-                            <p className="content">1 days 2 person</p>
-                            <div className="tp-price-meta">
-                              <h2>620 <small>$</small></h2>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-sm-6">
-                        <div className="single-destinations-list style-two">
-                          <div className="thumb">
-                            <img src={require("../../../assets/img/destination-list/12.png")} alt="list" />
-                          </div>
-                          <div className="details">
-                            <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />Rome</p>
-                            <h4 className="title"><Link to="/tour-details">Colosseum, Rome</Link></h4>
-                            <p className="content">3 days 3 person</p>
-                            <div className="tp-price-meta">
-                              <h2>620 <small>$</small></h2>
-                            </div>
-                          </div>
-                        </div>
-                      </div>   
-                      
-                      <div className="col-lg-12 text-center">
-                        <div className="tp-pagination text-center d-inline-block mt-4">
-                          <ul>
-                            <li><Link className="prev page-numbers" to="#"><i className="la la-long-arrow-left" /></Link></li>
-                            <li><span className="page-numbers">1</span></li>
-                            <li><span className="page-numbers current">2</span></li>
-                            <li><Link className="page-numbers" to="#">3</Link></li>
-                            <li><Link className="page-numbers" to="#">4</Link></li>
-                            <li><Link className="next page-numbers" to="#"><i className="la la-long-arrow-right" /></Link></li>
-                          </ul>                          
-                        </div>
-                      </div>
-                    </div>
+
+                    {/* ****  properties data Start **** */}
+                    {this.toursRendererHandler()}
+                    {/* ****  properties data End **** */}
                   </div>
                   <div className="col-xl-3 col-lg-4 order-lg-1">
                     <div className="sidebar-area sidebar-area-inner-page">

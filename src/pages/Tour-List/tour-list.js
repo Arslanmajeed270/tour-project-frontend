@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TourLIstComponents from './components/tour-list';
 
 import { connect } from 'react-redux';
-import { getToursData, getSingleTour } from '../../store/tours/actions';
+import { getToursData } from '../../store/tours/actions';
 import { getCities } from '../../store/home/actions';
 
 const mapStateToProps = (state) => ({
@@ -12,19 +12,13 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     onGetToursData: (reqPacket) => getToursData(reqPacket),
-    onGetSingleTour: (id) => getSingleTour(id),
     onGetCities: () => getCities(),
 }
 class TourList extends Component {
 
     state = {
         toursData: {},
-        cities: [],
-        location: "",
-        from: "",
-        departure: new Date(),
-        returnDate: new Date(),
-        travelType: ""
+        cities: []
       }
     
       static getDerivedStateFromProps(props, state) {
@@ -54,13 +48,14 @@ class TourList extends Component {
         if( !toursData.tours || !toursData.tours.length ){
             const reqPacket = {
                 offset: 1,
-                // departure: "",
-                // minPrice: 0,
-                // maxPrice: 0,
-                // name: "",
-                // location: "",
-                // travelType: "",
-                // returnDate: "",
+                departure: "",
+                minPrice: 0,
+                maxPrice: 0,
+                name: "",
+                location: "",
+                locationFrom: "",
+                travelType: "",
+                returnDate: "",
             };
             onGetToursData(reqPacket);
         }
@@ -76,25 +71,37 @@ class TourList extends Component {
         });
       }
 
+      paginationHandler = (offset) => {
+        const { onGetToursData } = this.props;
+        const reqPacket = {
+          offset: offset,
+          departure: "",
+          minPrice: 0,
+          maxPrice: 0,
+          name: "",
+          location: "",
+          locationFrom: "",
+          travelType: "",
+          returnDate: "",
+      };
+      onGetToursData(reqPacket);
+      }
+
 
     render() {
-        const { toursData, cities, location, from, departure,
-            returnDate, travelType } = this.state;
+        const { toursData, cities } = this.state;
             const tours = toursData.tours && toursData.tours.length ? toursData.tours : [];  
             const totalPages = toursData.totalPages  ? toursData.totalPages : 0;  
             const offset = toursData.offset  ? toursData.offset : 0;  
+            console.log('checking this.state: ', this.state);
         return (
         <div>
             <TourLIstComponents 
             tours={tours}
             cities={cities}
-            location={location}
-            from={from}
-            departure={departure}
-            returnDate={returnDate}
-            travelType={travelType}
             totalPages={totalPages}
             offset={offset}
+            onPaginationHandler={this.paginationHandler}
             />
         </div>
         )

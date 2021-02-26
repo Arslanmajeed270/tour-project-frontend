@@ -14,7 +14,7 @@ class App extends Component {
         publicRoutes: [
             '/',
             '/tour-list',
-            '/tour-details',
+            '/tour-details-:id',
             '/about-us',
             '/error',
             '/contact-us',

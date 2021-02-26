@@ -26,7 +26,7 @@ class Index extends Component {
         let title = "";
         if( pathname === "/tour-list" )
             title = "Tour List";
-        else if( pathname === "/tour-details" )
+        else if( pathname.indexOf("tour-details") > 0 )
             title = "Tour Details";
         else if( pathname === "/about-us" )
             title = "About Us";

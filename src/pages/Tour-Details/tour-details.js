@@ -1,11 +1,61 @@
-import React from 'react';
+import React, { Component }  from 'react';
 import TourDetailsComponent from './components/tour-details';
 
-const TourDetails = () => {
-    return <div>
-        <TourDetailsComponent />
-    </div>
+import { connect } from 'react-redux';
+import { getSingleTour } from '../../store/tours/actions';
+
+const mapStateToProps = (state) => ({
+  tours: state.tours
+})
+
+const mapDispatchToProps = {
+    onGetSingleTour: (id) => getSingleTour(id),
 }
 
-export default TourDetails
 
+class TourDetails extends Component {
+
+    state = {
+        singleTour: {},
+        id:null
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        const { tours } = props;
+        let stateChanged = false;
+        let changedState = {};
+
+        if (tours && tours.singleTour && JSON.stringify(state.singleTour) !== JSON.stringify(tours.singleTour)) 
+        {
+            changedState.singleTour = tours.singleTour;
+            stateChanged = true;
+        }
+
+        if (stateChanged) return changedState;
+        return null;
+    }
+
+    componentDidMount() {
+        const { onGetSingleTour, match } = this.props;
+        const { singleTour } = this.state;
+        const id = match.params.id;
+        if( id && (!singleTour || !singleTour.id) ){
+            this.setState({id});
+            onGetSingleTour(id);
+        }
+       
+    }
+
+    render() {
+        const { singleTour } = this.state;
+        return (
+            <div>
+            <TourDetailsComponent 
+                singleTour={singleTour}
+            />
+        </div>
+        )
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(TourDetails);

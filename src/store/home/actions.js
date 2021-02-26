@@ -18,12 +18,12 @@ import {
 const BACKEND_SERVER_URL = process.env.REACT_APP_API_URL || "/";
 
 // HomepageDate - Get homePageDate from backend
-export const getHomePageData = () => dispatch => {
+export const getHomePageData = ( reqPacket ) => dispatch => {
     dispatch(setPageLoading());
 
     axios
     .get(
-        BACKEND_SERVER_URL+'apis/homePage.json'
+        BACKEND_SERVER_URL+'apis/homePage.json',reqPacket
     )
     .then(res => {
         const { status, data } = res.data;
