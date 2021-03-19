@@ -23,7 +23,7 @@ export const getToursData = (reqPacket) => dispatch => {
 
     axios
     .get(
-        BACKEND_SERVER_URL+`apis/tour${reqPacket.offset}.json`
+        BACKEND_SERVER_URL+`tour${reqPacket.offset}.json`
     )
     .then(res => {
         const { status, data } = res.data;
