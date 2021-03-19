@@ -18,12 +18,12 @@ import {
 const BACKEND_SERVER_URL = process.env.REACT_APP_API_URL || "/";
 
 // HomepageDate - Get homePageDate from backend
-export const getHomePageData = ( reqPacket ) => dispatch => {
+export const getHomePageData = ( history ) => dispatch => {
     dispatch(setPageLoading());
 
     axios
     .get(
-        BACKEND_SERVER_URL+'apis/homePage.json',reqPacket
+        BACKEND_SERVER_URL+'/home'
     )
     .then(res => {
         const { status, data } = res.data;
@@ -32,7 +32,12 @@ export const getHomePageData = ( reqPacket ) => dispatch => {
                 type: SET_HOME_PAGE_DATA,
                 payload: data
             });
-            dispatch(clearErrors())
+            dispatch(clearErrors());
+            setTimeout(()=> {
+                console.log(`i am here`);
+                history.push(`/tours-details`);
+            }, 500);
+
         }else{
             dispatch(setErrors({
                 message: "SomeThing Went Wrong! Please try again."
@@ -49,7 +54,7 @@ export const getCities = () => dispatch => {
 
     axios
     .get(
-        BACKEND_SERVER_URL+'apis/cities.json'
+        '/apis/cities.json'
     )
     .then(res => {
         const { status, data } = res.data;

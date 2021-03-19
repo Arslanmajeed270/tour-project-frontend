@@ -15,7 +15,7 @@ class Offer extends Component {
 				<span className="d-list-tag">Special Offer</span>
 				: ""
 				} 
-				<img width="100%" height="195" src={`${data.image}`} alt="list" />
+				<img width="295" height="195" src={ data.tour && data.tour.imageCover ? `${data.tour.imageCover}` : '/assets/img/api_images/tour1.jpeg'} alt="list" />
 				<div className="d-list-btn-wrap">
 				  <div className="d-list-btn viaje-go-top">
 					<Link className="btn btn-yellow" to="/contact-us">Book Now <i className="fa fa-paper-plane" /></Link>
@@ -23,17 +23,17 @@ class Offer extends Component {
 				</div>
 			  </div>
 			  <div className="details">
-				<h4 className="title">{data.title}</h4>
-				<p className="content">{data.description}</p>
+				<h4 className="title">{ data.tour && data.tour.title ? data.tour.title : ''}</h4>
+				<p className="content">{ data.tour && data.tour.description ? data.tour.description : ''}</p>
 				<ul className="tp-list-meta border-bt-dot">
-				  <li><i className="fa fa-calendar-o" /> {moment(Date(data.departure)).format('DD MMM')}</li>
-				  <li><i className="fa fa-clock-o" /> {data.totalDays} days</li>
-				  <li><i className="fa fa-star" /> {data.rating}</li>
+				  <li><i className="fa fa-calendar-o" /> { data.tour && data.tour.departure ? moment(Date(data.tour.departure)).format('DD MMM') : ''}</li>
+				  <li><i className="fa fa-clock-o" /> { data.tour && data.tour.duration ? data.tour.duration : 0} days</li>
+				  <li><i className="fa fa-star" /> { data.tour && data.tour.ratingsAverage ? data.tour.ratingsAverage : 0}</li>
 				</ul>
 				<div className="tp-price-meta tp-price-meta-cl">
 				  <p>Price</p>
 				  <h2>{data.discountPrice} <small>$</small></h2>
-				  <del>{data.price}<span>$</span></del>
+				  <del> { data.tour && data.tour.price ? data.tour.price : 0}<span>$</span></del>
 				</div>
 			  </div>
 			</div>
