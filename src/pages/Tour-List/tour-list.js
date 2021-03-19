@@ -93,7 +93,6 @@ class TourList extends Component {
             const tours = toursData.tours && toursData.tours.length ? toursData.tours : [];  
             const totalPages = toursData.totalPages  ? toursData.totalPages : 0;  
             const offset = toursData.offset  ? toursData.offset : 0;  
-            console.log('checking this.state: ', this.state);
         return (
         <div>
             <TourLIstComponents 

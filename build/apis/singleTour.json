@@ -1,0 +1,32 @@
+{
+    "status":"success",
+    "data": {
+        "tour":
+        {
+            "id":31,
+            "images": [
+                "/assets/img/api_images/tour1.jpeg",
+                "/assets/img/api_images/tour2.jpg",
+                "/assets/img/api_images/tour3.jpg",
+                "/assets/img/api_images/tour4.jpg",
+                "/assets/img/api_images/tour5.jpg",
+                "/assets/img/api_images/tour6.jpg"
+            ],
+            "title":"Trip to Malam Jaba",
+            "location":"Malam Jabba",
+            "description":"this is demo 1",
+            "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
+            "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
+            "price":12000,
+            "totalDays": 4, 
+            "rating": 2.1,
+            "allowedPersons":4,
+            "tags": [
+                "Adventure",
+                "Travel",
+                "Nature",
+                "Malam Jabba"
+            ] 
+        }
+    }
+}

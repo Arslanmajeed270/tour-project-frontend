@@ -1,0 +1,47 @@
+{
+    "status":"success",
+    "data": {
+        "cities": [
+            {
+                "id": 1,
+                "name":"Malam Jabba"
+            },
+            {
+                "id": 2,
+                "name":"Karachi"
+            },
+            {
+                "id": 3,
+                "name":"Lahore"
+            },
+            {
+                "id": 4,
+                "name":"Multan"
+            },
+            {
+                "id": 5,
+                "name":"Bahawalpur"
+            },
+            {
+                "id": 6,
+                "name":"Faislabad"
+            },
+            {
+                "id": 7,
+                "name":"Gujranwala"
+            },
+            {
+                "id": 8,
+                "name":"Kasur"
+            },
+            {
+                "id": 9,
+                "name":"Sialkot"
+            },
+            {
+                "id": 10,
+                "name":"Peshawar"
+            }
+        ]
+    }
+}
