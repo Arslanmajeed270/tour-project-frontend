@@ -34,7 +34,6 @@ class Search extends Component {
     render() {
 		const { cities } = this.props;
 		const { location } = this.state;
-
     return  (
 	<div className="search-area tp-main-search-area viaje-go-top">
 		  <div className="container">

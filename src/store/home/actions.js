@@ -15,7 +15,7 @@ import {
     clearErrors
 } from '../errors/actions';
 
-const BACKEND_SERVER_URL = process.env.REACT_APP_API_URL || "/";
+const BACKEND_SERVER_URL = process.env.REACT_APP_API_URL_DEV || "/";
 
 // HomepageDate - Get homePageDate from backend
 export const getHomePageData = ( history ) => dispatch => {
@@ -34,7 +34,6 @@ export const getHomePageData = ( history ) => dispatch => {
             });
             dispatch(clearErrors());
             setTimeout(()=> {
-                console.log(`i am here`);
                 history.push(`/tours-details`);
             }, 500);
 
@@ -54,7 +53,7 @@ export const getCities = () => dispatch => {
 
     axios
     .get(
-        '/apis/cities.json'
+        'apis/cities'
     )
     .then(res => {
         const { status, data } = res.data;

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
+
 import TourLIstComponents from './components/tour-list';
 
 import { connect } from 'react-redux';
@@ -18,7 +20,15 @@ class TourList extends Component {
 
     state = {
         toursData: {},
-        cities: []
+        tours: [],
+        cities: [],
+        offset: 0,
+        totalPages: 0,
+        departure: "",
+        location: "",
+        locationFrom: "",
+        travelType: "",
+        returnDate: "",
       }
     
       static getDerivedStateFromProps(props, state) {
@@ -29,6 +39,9 @@ class TourList extends Component {
             if (tours && tours.toursData && JSON.stringify(state.toursData) !== JSON.stringify(tours.toursData)) 
             {
                 changedState.toursData = tours.toursData;
+                changedState.tours = tours.toursData.tours && tours.toursData.tours.length ? tours.toursData.tours : [];  
+                changedState.totalPages = tours.toursData.totalPages  ? tours.toursData.totalPages : 0;  
+                changedState.offset = tours.toursData.offset  ? tours.toursData.offset : 0;  
                 stateChanged = true;
             }
     
@@ -43,19 +56,18 @@ class TourList extends Component {
         }
     
       componentDidMount(){
-        const { onGetToursData, onGetCities } = this.props;
+        const { onGetToursData, onGetCities, location } = this.props;
         const { toursData, cities } = this.state;
+
+        const queryParam = new URLSearchParams(location.search);
         if( !toursData.tours || !toursData.tours.length ){
             const reqPacket = {
-                offset: 1,
-                departure: "",
-                minPrice: 0,
-                maxPrice: 0,
-                name: "",
-                location: "",
-                locationFrom: "",
-                travelType: "",
-                returnDate: "",
+                offset: 0,
+                departure: queryParam.get('departure') ? queryParam.get('departure') : '',
+                location: queryParam.get('location') ? queryParam.get('location') : '',
+                locationFrom: queryParam.get('locationFrom') ? queryParam.get('locationFrom') : '',
+                travelType: queryParam.get('travelType') ? queryParam.get('travelType') : '',
+                returnDate: queryParam.get('returnDate') ? queryParam.get('returnDate') : '',
             };
             onGetToursData(reqPacket);
         }
@@ -63,36 +75,58 @@ class TourList extends Component {
           onGetCities();
         }
       }
-    
+
       onChangeHandler = (e) => {
         const { name, value } = e.target;
         this.setState({
           [name]: value
         });
-      }
+        }
+
+      onSubmitHandler = () => {
+        const { location } = this.state;
+        const { onGetToursData } = this.props;
+        const locationFrom = $('select[name="from"]').siblings('.nice-select').find('span').html();
+        const departure = $('input[name="departure"]').val();
+        const returnDate = $('input[name="returnDate"]').val();
+        const travelType = $('select[name="travelType"]').siblings('.nice-select').find('span').html();
+        this.setState({
+          departure: departure,
+          locationFrom: locationFrom,
+          travelType: travelType,
+          returnDate: returnDate
+        }, ()=> {
+          const reqPacket = {
+            offset: 0,
+            departure: departure,
+            location: location,
+            locationFrom: locationFrom,
+            travelType: travelType,
+            returnDate: returnDate,
+        };
+        onGetToursData(reqPacket);
+        });
+    }
 
       paginationHandler = (offset) => {
         const { onGetToursData } = this.props;
+        const { departure, location, locationFrom, travelType, returnDate  } = this.state;
         const reqPacket = {
           offset: offset,
-          departure: "",
-          minPrice: 0,
-          maxPrice: 0,
-          name: "",
-          location: "",
-          locationFrom: "",
-          travelType: "",
-          returnDate: "",
+          departure,
+          location,
+          locationFrom,
+          travelType,
+          returnDate,
       };
-      onGetToursData(reqPacket);
+        onGetToursData(reqPacket);
       }
 
 
     render() {
-        const { toursData, cities } = this.state;
-            const tours = toursData.tours && toursData.tours.length ? toursData.tours : [];  
-            const totalPages = toursData.totalPages  ? toursData.totalPages : 0;  
-            const offset = toursData.offset  ? toursData.offset : 0;  
+        const { cities, tours, totalPages, offset, departure,
+          location, locationFrom, travelType, returnDate } = this.state;
+           
         return (
         <div>
             <TourLIstComponents 
@@ -100,7 +134,14 @@ class TourList extends Component {
             cities={cities}
             totalPages={totalPages}
             offset={offset}
-            onPaginationHandler={this.paginationHandler}
+            departure={departure}
+            location={location}
+            locationFrom={locationFrom}
+            travelType={travelType}
+            returnDate={returnDate}
+            onChangeHandler={this.onChangeHandler}
+            onSubmitHandler={this.onSubmitHandler}
+            paginationHandler={this.paginationHandler}
             />
         </div>
         )
