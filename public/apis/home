@@ -12,7 +12,7 @@
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
                 "discountPrice": 7000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3,
                 "specialOffer": false
             },
@@ -26,7 +26,7 @@
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
                 "discountPrice": 7000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3,
                 "specialOffer": true
             },
@@ -40,7 +40,7 @@
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
                 "discountPrice": 7000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3,
                 "specialOffer": true
             },
@@ -54,7 +54,7 @@
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
                 "discountPrice": 7000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3,
                 "specialOffer": true
             },
@@ -68,7 +68,7 @@
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
                 "discountPrice": 7000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3,
                 "specialOffer": true
             },
@@ -82,7 +82,7 @@
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
                 "discountPrice": 7000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3,
                 "specialOffer": false
 
@@ -97,7 +97,7 @@
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
                 "discountPrice": 7000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3,
                 "specialOffer": false
             },
@@ -111,7 +111,7 @@
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
                 "discountPrice": 7000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3,
                 "specialOffer": true
             },
@@ -125,7 +125,7 @@
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
                 "discountPrice": 7000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3,
                 "specialOffer": false
             },
@@ -139,7 +139,7 @@
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
                 "discountPrice": 7000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3,
                 "specialOffer": true
             },
@@ -153,7 +153,7 @@
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
                 "discountPrice": 7000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3,
                 "specialOffer": true
             },
@@ -167,7 +167,7 @@
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
                 "discountPrice": 7000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3,
                 "specialOffer": true
             }
@@ -182,7 +182,7 @@
                 "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3
             },
             {
@@ -194,7 +194,7 @@
                 "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3
             },
             {
@@ -206,7 +206,7 @@
                 "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3
             },
             {
@@ -218,7 +218,7 @@
                 "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3
             },
             {
@@ -230,7 +230,7 @@
                 "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3
             },
             {
@@ -242,7 +242,7 @@
                 "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3
 
             },
@@ -255,7 +255,7 @@
                 "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3
             },
             {
@@ -267,7 +267,7 @@
                 "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3
             },
             {
@@ -279,7 +279,7 @@
                 "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3
             },
             {
@@ -291,7 +291,7 @@
                 "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3
             },
             {
@@ -303,7 +303,7 @@
                 "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3
             },
             {
@@ -315,7 +315,7 @@
                 "departure": "Sun Feb 28 2021 11:49:37 GMT+0500 (Pakistan Standard Time)", 
                 "returning": "Thu Mar 04 2021 11:49:37 GMT+0500 (Pakistan Standard Time)",
                 "price":12000,
-                "totalDays": 4, 
+                "duration": 4, 
                 "rating": 4.3
             }
         ]

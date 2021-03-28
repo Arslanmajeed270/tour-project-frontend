@@ -15,25 +15,25 @@ class Search extends Component {
 	  }
 	  onSubmitHandler = () => {
 		  const { location } = this.state;
-		  const { onSearchHandler } = this.props;
-		 const locationFrom = $('select[name="from"]').siblings('.nice-select').find('span').html();
-		 const departure = $('input[name="departure"]').val();
-		 const returnDate = $('input[name="returnDate"]').val();
-		 const travelType = $('select[name="travelType"]').siblings('.nice-select').find('span').html();
-		 const reqPacket = {
-			location,
-			locationFrom,
-			departure,
-			returnDate,
-			travelType
-		  }
-		  onSearchHandler(reqPacket);
+			const locationFrom = $('select[name="from"]').siblings('.nice-select').find('span').html();
+			const departure = $('input[name="departure"]').val();
+			const returnDate = $('input[name="returnDate"]').val();
+			const travelType = $('select[name="travelType"]').siblings('.nice-select').find('span').html();
+			let URL = `/tour-list`;
+			if ( location !== "" || locationFrom !== "Where From?" || 
+			departure !== "" || returnDate !== "" || travelType !== "Travel Type" ){
+				URL += location !== "" ? `?location=${location}` : ``;
+				URL +=  locationFrom !== "Where From?" ?  URL !== `/tour-list` ? `&locationFrom=${locationFrom}` : `?locationFrom=${locationFrom}` : ``;
+				URL +=  departure !== "" ?  URL !== `/tour-list` ? `&departure=${departure}` : `?departure=${departure}` : ``;
+				URL +=  returnDate !== "" ?  URL !== `/tour-list` ? `&returnDate=${returnDate}` : `?returnDate=${returnDate}` : ``;
+				URL +=  travelType !== "Travel Type" ?  URL !== `/tour-list` ? `&travelType=${travelType}` : `?travelType=${travelType}` : ``;
+			}
+			this.props.history.push(URL);
 		}
 
     render() {
 		const { cities } = this.props;
 		const { location } = this.state;
-
     return  (
 	<div className="search-area tp-main-search-area viaje-go-top">
 		  <div className="container">

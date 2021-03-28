@@ -15,7 +15,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  onGetHomePageData: (reqPacket) => getHomePageData(reqPacket),
+  onGetHomePageData: (history) => getHomePageData(history),
   onGetCities: () => getCities(),
 }
 
@@ -48,30 +48,19 @@ class Home extends Component {
 	}
 
   componentDidMount(){
-    const { onGetHomePageData, onGetCities } = this.props;
+    const { onGetHomePageData, onGetCities, history } = this.props;
     const { homePageData, cities } = this.state;
     if( !homePageData.discountedTours || !homePageData.discountedTours.length ){
-      const reqPacket = {
-        location : "",
-        locationFrom : "",
-        departure : "",
-        returnDate : "",
-        travelType : ""
-      }
-      onGetHomePageData(reqPacket);
+      onGetHomePageData(history);
     }
     if( !cities || !cities.length ){
       onGetCities();
     }
   }
 
-  onSearchHandler = (reqPacket) => {
-    const { onGetHomePageData } = this.props;
-    onGetHomePageData(reqPacket);
-  }
-
   render() {
     const { homePageData, cities } = this.state;
+    const { history } = this.props;
     const discountedTours = homePageData.discountedTours ? homePageData.discountedTours : [];
     const tours = homePageData.tours ? homePageData.tours : [];
     return (
@@ -79,7 +68,7 @@ class Home extends Component {
       <Banner />
       <Search 
         cities={cities}
-        onSearchHandler={this.onSearchHandler}
+        history={history}
       />
       <Intro />
       <Offer discountedTours={discountedTours} />

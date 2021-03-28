@@ -10,10 +10,10 @@ class HolidayFun extends Component {
 				<div key={idx} className="col-lg-3 col-sm-6">
 			  <div className="single-destinations-list style-two wow animated fadeInUp" data-wow-duration="0.4s" data-wow-delay="0.1s">
 				<div className="thumb">
-				  <img width="387" height="258"  src={data.image} alt="list" />
+				  <img width="387" height="258" src={ data.imageCover ? `${data.imageCover}` : '/assets/img/api_images/tour1.jpeg'}  alt="list" />
 				</div>
 				<div className="details">
-				  <p className="location"><img src={require("../../../assets/img/icons/1.png")} alt="map" />{data.location}</p>
+				  <p className="location"><img  src={require("../../../assets/img/icons/1.png")} alt="map" />{data.location}</p>
 				  <h4 className="title">{data.title}</h4>
 				  <p className="content">{data.description}</p>
 				  <div className="tp-price-meta">

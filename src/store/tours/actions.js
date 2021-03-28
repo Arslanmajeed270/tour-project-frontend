@@ -24,8 +24,8 @@ export const getToursData = (reqPacket) => dispatch => {
     dispatch(setPageLoading());
 
     axios
-    .get(
-        BACKEND_SERVER_URL+`apis/tour${reqPacket.offset}.json`
+    .post(
+        BACKEND_SERVER_URL+`/tours`, reqPacket
     )
     .then(res => {
         const { status, data } = res.data;
@@ -51,14 +51,14 @@ export const getSingleTour = (id) => dispatch => {
 
     axios
     .get(
-        BACKEND_SERVER_URL+'apis/singleTour.json'
+        BACKEND_SERVER_URL+'/single-tour/'+id
     )
     .then(res => {
-        const { status, data } = res.data;
+        const { status, tour } = res.data;
         if( status === "success" ){
             dispatch({
                 type: SET_SINGLE_TOURS,
-                payload: data.tour
+                payload: tour
             });
             dispatch(clearErrors())
         }else{
@@ -67,7 +67,9 @@ export const getSingleTour = (id) => dispatch => {
             }))
         }        
     })
-    .catch(err => dispatch(setErrors(err)))
+    .catch(err => {
+        console.log('checking error: ', err);
+        dispatch(setErrors(err)) })
     .finally(() => dispatch(clearPageLoading()))
 };
 
