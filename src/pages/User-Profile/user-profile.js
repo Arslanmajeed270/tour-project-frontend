@@ -4,8 +4,15 @@ import { Link } from 'react-router-dom';
 import Tab1Profile from './components/profile' 
 import Tab2Verifications from './components/verifications' 
 import Tab3Settings from './components/settings' 
-import Tab4RecentlyViewed from './components/recently-viewed' 
-import Tab5Reviews from './components/reviews' 
+import Tab4Booking from './components/booking'
+import Tab5Reviews from './components/reviews'
+
+import { connect } from 'react-redux';
+import { logoutUser } from '../../store/auth/actions';
+
+const mapDispatchToProps = {
+  onLogoutUser: () => logoutUser(),
+}
 
 class UserProfile extends Component {
     state = {
@@ -19,6 +26,7 @@ class UserProfile extends Component {
 
     render() {
         const { activeTab } = this.state;
+        const { onLogoutUser } = this.props;
         return (
             <div className="user-profile-area pd-top-120">
             <div className="container">
@@ -56,11 +64,11 @@ class UserProfile extends Component {
                         </li>
                         <li className="nav-item">
                           <Link 
-                            className={`nav-link ${ activeTab === 4 ? "active" : "" }`} 
+                            className={`nav-link ${ activeTab === 4 ? "active" : "" }`}  
                             onClick={this.activeTabHandler(4)}
                             to="#"
                           >
-                            <i className="fa fa-recycle" />Recently Viewed
+                            <i className="fa fa-calendar-minus-o" />Booking
                         </Link>
                         </li>
                         <li className="nav-item">
@@ -76,6 +84,9 @@ class UserProfile extends Component {
                           <Link 
                             className="btn btn-yellow" 
                             to="#"
+                            onClick={ (e) =>  {
+                              e.preventDefault();
+                              onLogoutUser()}}
                           >
                             <i className="fa fa-sign-in" aria-hidden="true" /> <span>Log Out</span>
                         </Link>
@@ -87,7 +98,7 @@ class UserProfile extends Component {
                           <Tab1Profile active={activeTab} />
                           <Tab2Verifications active={activeTab} />
                           <Tab3Settings active={activeTab} />
-                          <Tab4RecentlyViewed active={activeTab} />
+                          <Tab4Booking active={activeTab} />
                           <Tab5Reviews active={activeTab} />
                     </div>
                     </div>
@@ -101,4 +112,4 @@ class UserProfile extends Component {
     }
 }
 
-export default UserProfile
+export default connect(null,mapDispatchToProps)(UserProfile);

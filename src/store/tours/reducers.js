@@ -1,11 +1,13 @@
 import { 
 	SET_TOURS_DATA,
-	SET_SINGLE_TOURS
+	SET_SINGLE_TOURS,
+	SET_USER_BOOKED_TOURS
  } from './types';
 
 const initialState = {
 	toursData: {},
-	singleTour: {}
+	singleTour: {},
+	bookedTours: []
 };
 
 export default function(state = initialState, action) {
@@ -19,6 +21,11 @@ export default function(state = initialState, action) {
 			return {
 				...state,
 				singleTour: action.payload
+			};
+		case SET_USER_BOOKED_TOURS:
+			return {
+				...state,
+				bookedTours: action.payload
 			};
 		default:
 			return state;

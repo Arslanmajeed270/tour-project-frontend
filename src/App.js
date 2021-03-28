@@ -2,8 +2,7 @@ import React , {Component} from 'react';
 import { withRouter, Switch, Redirect, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-// import PrivateRoute from './components/common/PrivateRoute';
-import PublicRoute from './components/common/PublicRoute';
+import PrivateRoute from './components/common/PrivateRoute';
 import { setCurrentUser, logoutUser } from './store/auth/actions';
 
 import Error from "./pages/Error/error";
@@ -17,15 +16,15 @@ class App extends Component {
             '/tour-details-:id',
             '/about-us',
             '/error',
-            '/contact-us',
-            '/user-profile'
+            '/contact-us'
         ],
         privateRoutes: [
+            '/user-profile'
         ]
     }
     render() {
         const { onSetCurrentUser, onLogoutUser } = this.props;
-        const { publicRoutes } = this.state;
+        const { publicRoutes, privateRoutes } = this.state;
         if (localStorage.jwtToken) {
 			onSetCurrentUser(JSON.parse(localStorage.jwtToken));
 		}else{
@@ -34,21 +33,21 @@ class App extends Component {
         return (
             <Switch>
                 {
-                    publicRoutes.map( (route, idx) => (<PublicRoute
+                    publicRoutes.map( (route, idx) => (<Route
                         exact
                         key={idx}
                         path={`${route}`}
                         component={Index}
                     />) )
                 }
-                 {/* {
+                 {
                     privateRoutes.map( (route, idx) => (<PrivateRoute
                         exact
                         key={idx}
                         path={`${route}`}
                         component={Index}
                     />) )
-                } */}
+                }
                 <Route exact path="/404" component={Error} />
                 <Redirect to='/' />
             </Switch>
@@ -58,7 +57,7 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-      onSetCurrentUser: () => dispatch(setCurrentUser()),
+      onSetCurrentUser: ( user ) => dispatch(setCurrentUser(user)),
       onLogoutUser: () => dispatch(logoutUser())
     };
   };

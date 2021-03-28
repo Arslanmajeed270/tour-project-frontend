@@ -1,8 +1,33 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux'
+
+const mapStateToProps = (state) => ({
+  auth: state.auth
+})
 
 class Navbar extends Component {
+  state = {
+    isAuthenticated: false
+  }
+  static getDerivedStateFromProps(props, state) {
+		const { auth } = props;
+		let stateChanged = false;
+		let changedState = {};
+
+		if (auth && auth.isAuthenticated !== state.homePageData) 
+		{
+			changedState.isAuthenticated = auth.isAuthenticated;
+			stateChanged = true;
+		}
+
+		if (stateChanged) return changedState;
+		return null;
+	}
+
   render() {
+    const { isAuthenticated } = this.state;
+    const { modelHandler } = this.props;
     return (
       <nav className="navbar navbar-area navbar-expand-lg nav-style-01 viaje-go-top">
         <div className="container nav-container">
@@ -73,7 +98,12 @@ class Navbar extends Component {
                 <Link to="/contact-us">Contact Us</Link>
               </li>
               <li>
-                <Link to="/user-profile">User Profile</Link>
+                <Link to="/user-profile" onClick={(e)=> {
+                  if(!isAuthenticated){
+                    e.preventDefault();
+                    modelHandler();
+                  }
+                }} >User Profile</Link>
               </li>
             </ul>
           </div>
@@ -95,4 +125,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default connect(mapStateToProps,null)(Navbar);

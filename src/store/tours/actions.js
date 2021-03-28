@@ -2,7 +2,8 @@ import axios from 'axios';
 
 import {
     SET_TOURS_DATA,
-    SET_SINGLE_TOURS
+    SET_SINGLE_TOURS,
+    SET_USER_BOOKED_TOURS
 } from './types';
 
 import {
@@ -84,6 +85,32 @@ export const bookTour = (reqPacket) => dispatch => {
         const { status } = res.data;
         if( status === "success" ){
             Success("Congratulations! Your tour successfully booked.");
+            dispatch(clearErrors())
+        }else{
+            dispatch(setErrors({
+                message: "SomeThing Went Wrong! Please try again."
+            }))
+        }        
+    })
+    .catch(err => dispatch(setErrors(err)))
+    .finally(() => dispatch(clearPageLoading()))
+};
+
+// user booked tours
+export const userBookingDetail = (id) => dispatch => {
+    dispatch(setPageLoading());
+    console.log(`i am here`);
+    axios
+    .get(
+        BACKEND_SERVER_URL+'/userBookingDetail/'+id
+    )
+    .then(res => {
+        const { status, data } = res.data;
+        if( status === "success" ){
+            dispatch({
+                type: SET_USER_BOOKED_TOURS,
+                payload: data.bookedTours
+            });
             dispatch(clearErrors())
         }else{
             dispatch(setErrors({

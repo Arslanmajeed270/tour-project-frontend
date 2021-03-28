@@ -7,6 +7,7 @@ import PageHeader from '../components/commonLayout/page-header';
 import Subscribe from '../components/commonLayout/subscribe';
 import Routes from './routes';
 import Loader from '../components/common/Loader';
+import AuthModel from './User-Profile/components/authModel'
 
 import { connect } from 'react-redux';
 
@@ -17,7 +18,8 @@ const mapStateToProps = (state) => ({
 class Index extends Component {
 
     state = {
-        loading: false
+        loading: false,
+        showModel: false,
     }
 
     headerTitleHandler = () => {
@@ -53,9 +55,20 @@ class Index extends Component {
 		return null;
 	}
 
+    closeModelHandler = () => {
+		this.setState({
+			showModel: false,
+		});
+	};
+	modelHandler = () => {
+        this.setState({
+            showModel: !this.state.showModel
+         });
+	};
+
     render() {
         const { history } = this.props;
-        const { loading } = this.state;
+        const { loading, showModel } = this.state;
         const pathname = history.location.pathname;
         return (
             <React.Fragment>
@@ -65,7 +78,10 @@ class Index extends Component {
                 <div className="body-overlay" id="body-overlay"></div>
                <FullScreenSearch />
                 <div id="viaje">
-                    <Navbar />
+                    <Navbar
+                        modelHandler={this.modelHandler}
+                        history={history}
+                    />
                     { pathname !== "/" &&
                         <PageHeader headertitle={this.headerTitleHandler()}  />
                     }
@@ -79,6 +95,10 @@ class Index extends Component {
                     <Footer />
                 </div>
                <BackToTop />
+               <AuthModel 
+               showModel={showModel}
+               closeModelHandler={this.closeModelHandler}
+               />
             </React.Fragment>
         )
     }
