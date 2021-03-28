@@ -8,6 +8,7 @@ import authReducer from './auth/reducers';
 import errorsReducer from './errors/reducers';
 import homePageReducer from './home/reducers';
 import toursReducer from './tours/reducers';
+import commonReducer from './common/reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   auth : authReducer,
   errors: errorsReducer,
   home: homePageReducer,
-  tours: toursReducer
+  tours: toursReducer,
+  common: commonReducer
 });
 
 //const store = createStore(burgerBuilderReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

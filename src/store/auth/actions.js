@@ -17,7 +17,7 @@ import {
 
 
  
-const BACKEND_SERVER_URL = process.env.REACT_APP_API_URL;
+const BACKEND_SERVER_URL = process.env.REACT_APP_API_URL_DEV;
 
 // Set logged in user (Verified)
 export const setCurrentUser = decoded => {

@@ -17,7 +17,7 @@ import {
 
 import { Success } from '../../components/common/toastify'
 
-const BACKEND_SERVER_URL = process.env.REACT_APP_API_URL || "/";
+const BACKEND_SERVER_URL = process.env.REACT_APP_API_URL_DEV || "/";
 
 // ToursDta - Get ToursData from backend
 export const getToursData = (reqPacket) => dispatch => {
@@ -68,7 +68,6 @@ export const getSingleTour = (id) => dispatch => {
         }        
     })
     .catch(err => {
-        console.log('checking error: ', err);
         dispatch(setErrors(err)) })
     .finally(() => dispatch(clearPageLoading()))
 };

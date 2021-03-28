@@ -3,8 +3,33 @@ import React, { Component } from 'react';
 
 class Contact extends Component {
 
+  state = {
+    name: "",
+    email: "",
+    phoneNumber:"",
+    message:""
+  }
+
+  inputChangeHandler = ( e ) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    });
+  }
+
+  formSubmitHandler = (e) => {
+    e.preventDefault();
+    const { name, email, phoneNumber, message } = this.state;
+    const { onContactUs } = this.props;
+    const reqPacket = {
+      name, email, phoneNumber, message
+    }
+    onContactUs(reqPacket);
+  }
+
     render() {
 
+      const { name, email, phoneNumber, message } = this.state;
     return	<div>
               <div className="contact-area pd-top-108">
                 <div className="container">
@@ -23,30 +48,54 @@ class Contact extends Component {
                       </div>
                     </div>
                     <div className="col-xl-5 col-lg-6">
-                      <form className="tp-form-wrap">
+                      <form className="tp-form-wrap" onSubmit={this.formSubmitHandler}>
                         <div className="row">
                           <div className="col-md-6">
                             <label className="single-input-wrap style-two">
                               <span className="single-input-title">Name</span>
-                              <input type="text" name="name" />
+                              <input 
+                              type="text" 
+                              name="name"
+                              value={name}
+                              required
+                              onChange={this.inputChangeHandler}
+                              />
                             </label>
                           </div>
                           <div className="col-md-6">
                             <label className="single-input-wrap style-two">
                               <span className="single-input-title">Number</span>
-                              <input type="text" name="number"/>
+                              <input 
+                              type="text" 
+                              name="phoneNumber"
+                              value={phoneNumber}
+                              required
+                              onChange={this.inputChangeHandler}
+                              />
                             </label>
                           </div>
                           <div className="col-lg-12">
                             <label className="single-input-wrap style-two">
                               <span className="single-input-title">Email</span>
-                              <input type="text" name="email"/>
+                              <input 
+                              type="text" 
+                              name="email"
+                              value={email}
+                              required
+                              onChange={this.inputChangeHandler}
+                              />
                             </label>
                           </div>
                           <div className="col-lg-12">
                             <label className="single-input-wrap style-two">
                               <span className="single-input-title">Message</span>
-                              <textarea defaultValue={""} name="message" />
+                              <textarea 
+                              defaultValue={""} 
+                              name="message" 
+                              value={message}
+                              required
+                              onChange={this.inputChangeHandler}
+                              />
                             </label>
                           </div>
                           <div className="col-12">

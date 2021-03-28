@@ -31,7 +31,6 @@ class TourDetails extends Component {
 
   submitFormHandler = (e) => {
     e.preventDefault();
-    console.log("i am into form handler");
     const { name, email, phone, cnic, cnicImage, message } = this.state;
     const { onBookTour } = this.props;
     const formData = new FormData();
@@ -47,7 +46,6 @@ class TourDetails extends Component {
     render() {
       const { singleTour } = this.props;
       const {  name, email, phone, cnic, message } = this.state;
-      console.log(`checking this.state: `, this.state);
     return	(
     <div className="tour-details-area mg-top--70">
               <div className="tour-details-gallery">
