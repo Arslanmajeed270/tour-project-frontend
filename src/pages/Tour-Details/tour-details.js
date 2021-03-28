@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import TourDetailsComponent from './components/tour-details';
 
 import { connect } from 'react-redux';
-import { getSingleTour } from '../../store/tours/actions';
+import { getSingleTour, bookTour } from '../../store/tours/actions';
 
 const mapStateToProps = (state) => ({
   tours: state.tours
@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     onGetSingleTour: (id) => getSingleTour(id),
+    onBookTour: (reqPacket) => bookTour(reqPacket),
 }
 
 
@@ -48,10 +49,12 @@ class TourDetails extends Component {
 
     render() {
         const { singleTour } = this.state;
+        const { onBookTour } = this.props;
         return (
             <div>
             <TourDetailsComponent 
                 singleTour={singleTour}
+                onBookTour={onBookTour}
             />
         </div>
         )

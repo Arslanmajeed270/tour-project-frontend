@@ -4,9 +4,48 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class TourDetails extends Component {
+  state = {
+    name:"",
+    email:"",
+    phone:"",
+    cnic:"",
+    cnicImage: null,
+    message:"",
+  }
+
+  inputChangeHandler = ( e ) => {
+    const { name, value } = e.target;
+    if( name === 'cnicImage' ){
+      this.setState({
+        cnicImage: e.target.files[0]
+      })
+    }
+    else{
+      this.setState({
+        [name]: value
+      });
+    }
+  }
+
+  submitFormHandler = (e) => {
+    e.preventDefault();
+    console.log("i am into form handler");
+    const { name, email, phone, cnic, cnicImage, message } = this.state;
+    const { onBookTour } = this.props;
+    const formData = new FormData();
+    formData.append( 'name',name );
+    formData.append( 'email',email );
+    formData.append( 'phone',phone );
+    formData.append( 'cnic',cnic );
+    formData.append( 'cnicImage',cnicImage );
+    formData.append( 'message',message );
+    onBookTour(formData)
+  }
 
     render() {
       const { singleTour } = this.props;
+      const {  name, email, phone, cnic, message } = this.state;
+      console.log(`checking this.state: `, this.state);
     return	(
     <div className="tour-details-area mg-top--70">
               <div className="tour-details-gallery">
@@ -289,6 +328,7 @@ class TourDetails extends Component {
                                 <i className="fa fa-star" />
                               </div>
                             </div>
+                            
                             <div className="col-lg-6">
                               <label className="single-input-wrap">
                                 <span className="single-input-title">Name</span>
@@ -319,37 +359,69 @@ class TourDetails extends Component {
                     <div className="sidebar-area sidebar-area-4">
                       <div className="widget tour-list-widget">
                         <div className="widget-tour-list-meta">
-                          <div className="single-widget-search-input-title"><i className="fa fa-user" /> Name</div>
-                          <div className="single-widget-search-input">
-                            <input type="text" placeholder="Name" />
+                          <form onSubmit={this.submitFormHandler} >
+                            <div className="single-widget-search-input-title"><i className="fa fa-user" /> NAME</div>
+                            <div className="single-widget-search-input">
+                              <input type="text" 
+                              placeholder="Name" 
+                              name="name" 
+                              value={name} 
+                              required
+                              onChange={this.inputChangeHandler} />
+                            </div>
+                            <div className="single-widget-search-input-title"><i className="fa fa-envelope" /> EMAIL</div>
+                            <div className="single-widget-search-input">
+                              <input type="text" 
+                              placeholder="Email" 
+                              name="email"  
+                              value={email} 
+                              required
+                              onChange={this.inputChangeHandler} />
+                            </div>
+                            <div className="single-widget-search-input-title"><i className="fa fa-phone" /> PHONE</div>
+                            <div className="single-widget-search-input">
+                              <input type="text" 
+                              placeholder="Phone" 
+                              name="phone" 
+                              value={phone} 
+                              onChange={this.inputChangeHandler} />
+                            </div>
+                            <div className="single-widget-search-input-title"><i className="fa fa-phone" /> CNIC</div>
+                            <div className="single-widget-search-input">
+                              <input type="text" 
+                              placeholder="CNIC Number" 
+                              name="cnic"
+                              value={cnic}
+                              required
+                              onChange={this.inputChangeHandler} />
+                            </div>
+                            <div className="single-widget-search-input-title"><i className="fa fa-phone" /> CNIC IMAGE</div>
+                            <div className="single-widget-search-input">
+                              <input type="file" 
+                              placeholder="CNIC Image" 
+                              name="cnicImage"
+                              required
+                              style={{
+                                height:"unset",
+                                lineHeight: "unset",
+                                padding: "0px"
+                              }}
+                              onChange={this.inputChangeHandler} />
+                            </div>
+                            <div className="single-widget-search-input-title"><i className="fa fa-keyboard-o" /> MESSAGE</div>
+                            <div className="single-widget-search-input">
+                              <textarea 
+                              placeholder="Type" 
+                              defaultValue={""} 
+                              name="message"
+                              value={message}
+                              onChange={this.inputChangeHandler} />
+                            </div>
+                            <div className="text-lg-center text-left">
+                            <button type="submit" className="btn btn-yellow"  >Book Now <i className="fa fa-paper-plane" /></button>
                           </div>
-                          <div className="single-widget-search-input-title"><i className="fa fa-envelope" /> Email</div>
-                          <div className="single-widget-search-input">
-                            <input type="text" placeholder="Email" />
-                          </div>
-                          <div className="single-widget-search-input-title"><i className="fa fa-phone" /> Phone</div>
-                          <div className="single-widget-search-input">
-                            <input type="text" placeholder="Phone" />
-                          </div>
-                          <div className="single-widget-search-input-title"><i className="fa fa-calendar-minus-o" /> Date</div>
-                          <div className="single-widget-search-input">
-                            <input type="text" className="departing-date custom-select" placeholder="Departing" />
-                          </div>
-                          <div className="single-widget-search-input-title"><i className="fa fa-calendar-minus-o" /> Date</div>
-                          <div className="single-widget-search-input">
-                            <input type="text" className="returning-date custom-select" placeholder="Returning" />
-                          </div>
-                          <div className="single-widget-search-input-title"><i className="fa fa-keyboard-o" /> Message</div>
-                          <div className="single-widget-search-input">
-                            <textarea placeholder="Type" defaultValue={""} />
-                          </div>
-                          <div className="text-lg-center text-left">
-                            <Link className="btn btn-yellow" to="#">Book Now <i className="fa fa-paper-plane" /></Link>
-                          </div>
+                          </form>
                         </div>
-                      </div>
-                      <div className="widget_ads">
-                        <Link to="#"><img className="w-100" src={require("../../../assets/img/others/01.png")}alt="img" /></Link>
                       </div>
                     </div>
                   </div>

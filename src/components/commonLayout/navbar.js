@@ -80,7 +80,7 @@ class Navbar extends Component {
           <div className="nav-right-content">
             <ul>
               <li>
-                <Link className="btn btn-yellow" to="/tour-details">
+                <Link className="btn btn-yellow" to="/tour-list">
                   Book Now <i className="fa fa-paper-plane" />
                 </Link>
               </li>
